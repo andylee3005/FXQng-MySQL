@@ -1,0 +1,88 @@
+<div *ngIf="isLoggedIn" class="list row">
+    <div class="column">
+        <div>
+            <mat-form-field appearance="fill">
+              <mat-label>Portfolio name</mat-label>
+              <input matInput [(ngModel)]="newPName" />
+            </mat-form-field>
+      
+            <mat-form-field appearance="standard">
+              <mat-label>Select a currency</mat-label>
+              <mat-select [(value)]="newCurrency">
+                <mat-option value="USD">USD</mat-option>
+                <mat-option value="CAD">CAD</mat-option>
+                <mat-option value="EUR">EUR</mat-option>
+                <mat-option value="JPY">JPY</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <button mat-raised-button (click)="createPortfolio()">Create</button>
+          </div>
+        <h3><strong>Portfolio List</strong></h3>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let portfolio of portfolios; let i = index" [class.active]="i == currentIndex"
+          (click)="setActivePortfolio(portfolio, i)">
+          {{ portfolio.pName }} | {{ portfolio.currency }}
+        </li>
+        <div *ngIf="portfolios.length==0">
+          <br />
+          <p>No portfolios found.</p>
+        </div>
+  
+      </ul>
+      
+  
+    </div>
+  
+    <div class="column">
+      <div *ngIf="currentPortfolio">
+        <h3><strong>Portfolio Details</strong></h3>
+        <div>
+          <label><strong>Last modified:</strong></label>
+          {{ currentPortfolio.updated }}
+        </div>
+        <div>
+          <label><strong>Currency:</strong></label>
+          {{ currentPortfolio.currency }}
+        </div>
+        <div>
+          <label><strong>Stocks:</strong></label>
+          <table *ngIf="stocks.length!==0" class="stocks">
+  
+            <tr>
+              <th>Symbol</th>
+              <th>Currency</th>
+              <th>Price</th>
+              <th>Volume</th>
+              <th>Time bought</th>
+            </tr>
+            <tr *ngFor="let stock of stocks">
+              <td>{{ stock.symbol }}</td>
+              <td>{{ stock.currency }}</td>
+              <td>{{ stock.price }}</td>
+              <td>{{ stock.volume }}</td>
+              <td>{{ stock.time_purchased }}</td>
+  
+            </tr>
+  
+          </table>
+          <p *ngIf="stocks.length==0">No stocks found.</p>
+          <button mat-raised-button routerLink="/portfolio/edit/{{ currentPortfolio.id }}" style="background-color:rgb(235, 255, 59)">
+            Manage
+          </button>
+          <button mat-raised-button (click)="deletePortfolio()" style="background-color:rgb(190, 0, 0)">
+            Delete
+          </button>
+        </div>
+  
+      </div>
+  
+      <div *ngIf="!currentPortfolio">
+        <br />
+        <p>Please click on or create a portfolio...</p>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="!isLoggedIn">
+    <h1>Please login to continue</h1>
+  </div>

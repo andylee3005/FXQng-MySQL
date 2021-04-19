@@ -1,0 +1,94 @@
+<body>
+    <div class="row">
+        <div class="column" style="width: 30%">
+
+            <div class="edit-form">
+                <mat-label>Create Stock</mat-label>
+                <form>
+                    <p>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Symbol</mat-label>
+                            <input matInput [(ngModel)]="_symbol" name="symbolInput" />
+                        </mat-form-field>
+                    </p>
+                    <!-- <input [ngModel]="username" (ngModelChange)="username = $event">
+                            <p>Hello {{username}}!</p> -->
+                    <p>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Select a Currency</mat-label>
+                            <mat-select [(ngModel)]="_currency" name="currencyInput">
+                                <mat-option value="USD">USD</mat-option>
+                                <mat-option value="CAD">CAD</mat-option>
+                                <mat-option value="EUR">EUR</mat-option>
+                                <mat-option value="JPY">JPY</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Volume</mat-label>
+                            <input matInput placeholder="" [(ngModel)]="_volume" name="volumeInput" />
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Price</mat-label>
+                            <input matInput [(ngModel)]="_price" placeholder="Up to 8 decimals" name="priceInput" />
+                        </mat-form-field>
+                    </p>
+                    <button mat-raised-button (click)="createStock()" style="align-content: right">Create</button>
+
+                </form>
+
+            </div>
+
+        </div>
+        <div class="column" style="width: 30%">
+            <div *ngIf="toMod">
+                <div class="edit-form">
+                    <mat-label>Modify Stock</mat-label>
+                    <form>
+                        <p>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Symbol</mat-label>
+                                <input matInput [(ngModel)]="toMod.symbol" name="msymbolInput" />
+                            </mat-form-field>
+                        </p>
+                        <!-- <input [ngModel]="username" (ngModelChange)="username = $event">
+                                            <p>Hello {{username}}!</p> -->
+                        <p>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Select a Currency</mat-label>
+                                <mat-select [(ngModel)]="toMod.currency" name="mcurrencyInput">
+                                    <mat-option value="USD">USD</mat-option>
+                                    <mat-option value="CAD">CAD</mat-option>
+                                    <mat-option value="EUR">EUR</mat-option>
+                                    <mat-option value="JPY">JPY</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </p>
+                        <p>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Volume</mat-label>
+                                <input matInput placeholder="" [(ngModel)]="toMod.volume" name="mvolumeInput" />
+                            </mat-form-field>
+                        </p>
+                        <p>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Price</mat-label>
+                                <input matInput [(ngModel)]="toMod.price" placeholder="Up to 8 decimals"
+                                    name="mpriceInput" />
+                            </mat-form-field>
+                        </p>
+                        <button mat-raised-button (click)="modifyStock()" style="background-color: rgb(232, 255, 29)">Modify</button>
+                        <button mat-raised-button (click)="deleteStock()" style="background-color: crimson">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="column" style="width: 40%">
+            <h3>All stocks</h3>
+            <app-stock-list (stockSelected)="onSelectClicked($event)"></app-stock-list>
+        </div>
+    </div>
+</body>

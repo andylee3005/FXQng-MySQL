@@ -1,1 +1,94 @@
-/* You can add global styles to this file, and also import other style files */
+
+You can add global styles to this file, and also import other style files
+
+html, body {
+    min-height: 100%;
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color:rgb(243, 240, 250);
+}
+
+h3 {
+    padding-top: 10px;
+    padding-left: 10px;
+    font-weight: bold;
+}
+
+.edit-form {
+    margin-top: 10px;
+    padding-inline: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color:#ffffe6 ;
+}
+
+table {
+    width: 100%;
+    margin-bottom: 65px;
+}
+
+.mat-form-field {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.mat-header-cell {
+    justify-content: left;
+    font-size: large;
+    font-weight: bold;
+    padding: 0px 0px 0px 4px;
+  }
+
+.mat-spinner {
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.mat-toolbar ul {
+    justify-content: end;
+}
+ul li a {
+    color: rgb(255, 255, 255);
+}
+
+.nav-link {
+    padding: 0px;
+    font-size: 14px;
+}
+
+/* div {
+    margin-left: 10px;
+    margin-right: 10px;
+} */
+
+footer {   
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:50px;
+    width:100%;
+    background:rgb(243, 240, 250);
+ }
+ /* .mat-paginator {
+    margin-right: 10px;
+    background:rgb(243, 240, 250);
+ } */
+
+ /* button {
+     margin-right: 5px;
+     margin-bottom: 5px;
+ } */
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
